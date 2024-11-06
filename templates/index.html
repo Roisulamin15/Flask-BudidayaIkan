@@ -1,0 +1,129 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solusi cerdas budidaya ikan air tawar </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-400 text-slate-200 px-6 py-4">
+        <div class="container mx-auto flex justify-center items-center">
+            <!-- Website Name -->
+            <span class="text-2xl font-bold">
+                Hi Cultivators
+            </span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container mx-auto px-4 py-12">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+            <!-- Left Content -->
+            <div class="md:w-1/2">
+                <h1 class="text-4xl md:text-5xl font-bold text-blue-900 mb-6">
+                    Mari tingkatkan kualitas produk kita!
+                </h1>
+                <p class="text-gray-600 text-xl mb-8">
+                    Dengan semakin meningkatnya permintaan protein sehat, budidaya ikan air tawar menawarkan peluang bisnis yang besar! Ayo bergabung dalam komunitas petani ikan air tawar.
+                </p>
+
+                <div class="flex gap-4">
+                    <button onclick="window.location.href='/Tanyakansesuatu';" 
+                            class="bg-blue-400 text-white px-8 py-3 rounded-lg hover:bg-blue-500 transition">
+                        Tanyakan sesuatu
+                    </button>
+                    <button onclick="window.location.href='/Downloadaplikasi';" 
+                            class="bg-blue-400 text-white px-8 py-3 rounded-lg hover:bg-blue-500 transition">
+                        Download Aplikasi
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Image -->
+            <div class="md:w-1/2">
+                <img class="mx-auto" src="{{url_for('static', filename='img/logo.png')}}" alt="Logo" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="bg-blue-300 py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-50 mb-12">
+                Mari mengenal lebih dalam lagi tentang budidaya ikan
+            </h2>
+            
+            <div class="bg-gray-50 p-6 rounded-xl mx-auto max-w-2xl">
+                <h3 class="text-xl font-semibold text-blue-900 mb-3">Artikel</h3>
+                <p class="text-gray-600">
+                    Budidaya ikan air tawar telah berkembang pesat sebagai usaha ekonomi yang menjanjikan dan ramah lingkungan.
+                </p>
+                <div class="mt-4">
+                    <button onclick="window.location.href='https://efishery.com/id/resources/cara-budidaya-ikan-air-tawar/';" 
+                            class="bg-blue-400 text-white px-8 py-3 rounded-lg hover:bg-blue-500 transition">
+                        Mengenal lebih dalam
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Features Section -->
+    <div class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-12">
+            Dokumentasi & informasi ikan budidaya yang sering kita jumpai
+        </h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Feature Card 1 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <img src="{{url_for('static', filename='img/feature1.png')}}" alt="API Integration" class="w-full h-48 object-cover rounded-t-lg mb-4">
+                <h3 class="text-xl font-semibold text-blue-900 mb-3">Ikan Nila</h3>
+                <p class="text-gray-600">Ikan nila siap panen setelah 4-6 bulan dengan bobot 300-500 gram. Ciri ikan nila siap panen adalah tubuh sehat, warna cerah, dan gerakan aktif. Panen dilakukan dengan menguras kolam atau menggunakan jaring.</p>
+            </div>
+
+            <!-- Feature Card 2 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <img src="{{url_for('static', filename='img/feature2.png')}}" alt="Custom Dashboard" class="w-full h-48 object-cover rounded-t-lg mb-4">
+                <h3 class="text-xl font-semibold text-blue-900 mb-3">Ikan Lele</h3>
+                <p class="text-gray-600">Ikan lele siap panen dalam waktu 2-3 bulan dengan bobot 200-250 gram per ekor. Ciri-ciri lele siap panen adalah ukuran tubuh yang stabil, gerakan aktif, dan kondisi sehat. Panen biasanya dilakukan dengan jaring atau menguras kolam.</p>
+            </div>
+
+            <!-- Feature Card 3 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <img src="{{url_for('static', filename='img/feature3.png')}}" alt="Team Access" class="w-full h-48 object-cover rounded-t-lg mb-4">
+                <h3 class="text-xl font-semibold text-blue-900 mb-3">Ikan Mujaer</h3>
+                <p class="text-gray-600">Ikan mujair siap panen setelah 3-4 bulan dengan bobot 150-300 gram per ekor. Ciri ikan mujair yang siap panen meliputi warna cerah dan ukuran yang sesuai dengan permintaan pasar. Panen dilakukan dengan cara menguras kolam atau menggunakan jaring.</p>
+            </div>
+
+            <!-- Feature Card 4 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <img src="{{url_for('static', filename='img/Feature4.png')}}" alt="Analytics" class="w-full h-48 object-cover rounded-t-lg mb-4">
+                <h3 class="text-xl font-semibold text-blue-900 mb-3">Ikan Mas</h3>
+                <p class="text-gray-600">Ikan mas siap panen setelah 6-8 bulan dengan bobot 300-500 gram per ekor. Ciri-ciri ikan mas yang siap panen adalah warna yang cerah dan tubuh yang proporsional, tidak terlalu gemuk atau kurus. Panen dapat dilakukan dengan cara menguras kolam atau menggunakan jaring.</p>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <footer class="bg-blue-400 text-white py-6 mt-12">
+            <div class="container mx-auto text-center">
+                <p class="text-sm">
+                    &copy; 2024 Solusi Cerdas Budidaya Ikan Air Tawar. Oleh Mahasiswa Politeknik Harapan Bersama.
+                </p>
+                <p class="text-sm">
+                    Follow us on 
+                    <a href="https://facebook.com" class="text-yellow-300 hover:underline">Facebook</a>, 
+                    <a href="https://Whatsapp.com" class="text-yellow-300 hover:underline">Whatsapp</a>, 
+                    <a href="https://instagram.com" class="text-yellow-300 hover:underline">Instagram</a>
+                </p>
+            </div>
+        </footer>
+    </div>
+           
+</body>
+</html>

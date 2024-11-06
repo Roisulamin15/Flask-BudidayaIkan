@@ -1,0 +1,76 @@
+<!-- templates/tanyakan_sesuatu.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+    
+    <!-- Chatbot Container -->
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-md h-3/4 flex flex-col">
+        
+        <!-- Chatbot Header -->
+        <div class="bg-blue-500 text-white px-4 py-3 rounded-t-lg">
+            <h2 class="text-xl font-semibold">Chatbot</h2>
+            <p class="text-sm">Tanyakan sesuatu kepada kami seputar budidaya ikan!</p>
+        </div>
+
+        <!-- Chat Display Area -->
+        <div id="chatDisplay" class="flex-1 p-4 overflow-y-auto bg-gray-50">
+            <!-- Chat messages will go here -->
+            <div class="text-sm text-gray-500 mb-2">Chatbot aktif, silakan kirim pesan.</div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="border-t border-gray-300 p-4">
+            <form id="chatForm" class="flex items-center">
+                <input type="text" id="chatInput" placeholder="Ketik pesan..." 
+                       class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300">
+                <button type="submit" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
+                    Kirim
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script to handle basic chatbot functionality -->
+    <script>
+        document.getElementById("chatForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const chatInput = document.getElementById("chatInput");
+            const userMessage = chatInput.value.trim();
+            
+            if (userMessage) {
+                addMessageToChat("User", userMessage);
+                chatInput.value = ""; // Clear input field
+
+                // Simulate chatbot response
+                setTimeout(() => {
+                    addMessageToChat("Bot", "Ini adalah contoh jawaban dari chatbot.");
+                }, 1000);
+            }
+        });
+
+        function addMessageToChat(sender, message) {
+            const chatDisplay = document.getElementById("chatDisplay");
+            const messageElement = document.createElement("div");
+            messageElement.classList.add("mb-4", "p-2", "rounded-lg", "shadow");
+
+            if (sender === "User") {
+                messageElement.classList.add("bg-blue-100", "self-end", "text-right");
+                messageElement.innerHTML = `<strong>You:</strong> ${message}`;
+            } else {
+                messageElement.classList.add("bg-gray-200", "text-left");
+                messageElement.innerHTML = `<strong>Bot:</strong> ${message}`;
+            }
+
+            chatDisplay.appendChild(messageElement);
+            chatDisplay.scrollTop = chatDisplay.scrollHeight; // Auto-scroll to the bottom
+        }
+    </script>
+
+</body>
+</html>
