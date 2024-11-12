@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Dokumentasi Ikan Budidaya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Function to show/hide forms based on selected fish
+        function showForm() {
+            var selectedFish = document.getElementById('selectFish').value;
+
+            // Hide all forms
+            document.querySelectorAll('.fish-form').forEach(function(form) {
+                form.style.display = 'none';
+            });
+
+            // Show the selected form
+            if (selectedFish !== "") {
+                document.getElementById(selectedFish).style.display = 'block';
+            }
+        }
+
+        // Function to save the form data into localStorage
+        function saveData() {
+            // Collecting data from form fields
+            const selectedFish = document.getElementById('selectFish').value;
+
+            if (selectedFish === "") {
+                alert("Silakan pilih ikan terlebih dahulu.");
+                return;
+            }
+
+            const fishData = {
+                name: document.querySelector(`[name="name_${selectedFish}"]`).value,
+                description: document.querySelector(`[name="desc_${selectedFish}"]`).value,
+                image: document.querySelector(`[name="image_${selectedFish}"]`).files[0] ? document.querySelector(`[name="image_${selectedFish}"]`).files[0].name : "No image selected"
+            };
+
+            // Save the data in localStorage
+            localStorage.setItem(`${selectedFish}_data`, JSON.stringify(fishData));
+
+            alert("Data berhasil disimpan!");
+
+            // Optionally, you could display the saved data on the page here
+            displaySavedData();
+
+            // Reload the page to reflect changes
+            location.reload();
+        }
+
+        // Function to display saved data from localStorage
+        function displaySavedData() {
+            const selectedFish = document.getElementById('selectFish').value;
+
+            if (selectedFish !== "") {
+                const savedData = JSON.parse(localStorage.getItem(`${selectedFish}_data`));
+
+                if (savedData) {
+                    const dataDisplay = document.getElementById('savedDataDisplay');
+                    dataDisplay.innerHTML = `
+                        <h3 class="text-xl font-semibold text-blue-900 mb-4">Data Tersimpan untuk ${savedData.name}</h3>
+                        <p><strong>Deskripsi:</strong> ${savedData.description}</p>
+                        <p><strong>Gambar:</strong> ${savedData.image}</p>
+                    `;
+                }
+            }
+        }
+
+        // Load saved data when the page loads (optional)
+        window.onload = function() {
+            displaySavedData();
+        };
+    </script>
+</head>
+<body class="bg-blue-50">
+
+    <!-- Container -->
+    <div class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-12">
+            Edit Dokumentasi & Informasi Ikan Budidaya
+        </h2>
+
+        <!-- Dropdown to select fish -->
+        <div class="mb-8">
+            <label for="selectFish" class="block mb-2 text-gray-700">Pilih Ikan yang Ingin Diedit</label>
+            <select id="selectFish" onchange="showForm()" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-400">
+                <option value="">--Pilih Ikan--</option>
+                <option value="nila">Ikan Nila</option>
+                <option value="lele">Ikan Lele</option>
+                <option value="mujaer">Ikan Mujaer</option>
+                <option value="mas">Ikan Mas</option>
+            </select>
+        </div>
+
+        <!-- Form for Ikan Nila -->
+        <form action="javascript:void(0);" method="POST" enctype="multipart/form-data" class="space-y-8 fish-form" id="nila" style="display: none;">
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-xl font-semibold text-blue-900 mb-4">Ikan Nila</h3>
+                <label class="block mb-2 text-gray-700">Gambar</label>
+                <input type="file" name="image_nila" class="w-full px-3 py-2 border rounded-md">
+
+                <label class="block mt-4 mb-2 text-gray-700">Nama Ikan</label>
+                <input type="text" name="name_nila" value="Ikan Nila" class="w-full px-3 py-2 border rounded-md">
+
+                <label class="block mt-4 mb-2 text-gray-700">Deskripsi</label>
+                <textarea name="desc_nila" rows="4" class="w-full px-3 py-2 border rounded-md">
+Ikan nila siap panen setelah 4-6 bulan dengan bobot 300-500 gram. Ciri ikan nila siap panen adalah tubuh sehat, warna cerah, dan gerakan aktif. Panen dilakukan dengan menguras kolam atau menggunakan jaring.
+                </textarea>
+            </div>
+        </form>
+
+        <!-- Display saved data -->
+        <div id="savedDataDisplay" class="mt-8"></div>  
+
+        <!-- Submit Button -->
+        <div class="text-center mt-8">
+            <button onclick="saveData()" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-500 transition">
+                Simpan Perubahan
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+</head>
+<body>
+    <h1>Dashboard Admin</h1>
+    
+    <!-- Tombol untuk tambah dokumentasi -->
+    <a href="{{ url_for('edit_dokumentasi', id=0) }}">Tambah Dokumentasi</a>
+
+    <h2>Daftar Dokumentasi</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Judul</th>
+                <th>Deskripsi</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in dokumentasi %}
+            <tr>
+                <td>{{ doc.id }}</td>
+                <td>{{ doc.judul }}</td>
+                <td>{{ doc.deskripsi }}</td>
+                <td>
+                    <a href="{{ url_for('edit_dokumentasi', id=doc.id) }}">Edit</a>
+                    <form action="{{ url_for('hapus_dokumentasi', id=doc.id) }}" method="POST" style="display:inline;">
+                        <button type="submit">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
